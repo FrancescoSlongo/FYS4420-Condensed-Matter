@@ -14,12 +14,12 @@ set(axs1, 'xlim', [0 1260]);
 set(axs1, 'ylim', [295.97 296.2]);
 xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 12);
-yl = ylabel('T [K]', 'interpreter', 'latex');
+yl = ylabel('$T [K]$', 'interpreter', 'latex');
 set(yl, 'FontSize', 12);
 % Grid
 grid on;
 % Zoom: I create new axes
-axes('position', [.6 .2 .2 .2])
+axes('position', [.68 .17 .2 .2])
 box on
 % I Plot the same graph but smaller
 plot(cm(1:200), T(1:200), '.','markersize',6,'color', 'r');
@@ -38,7 +38,7 @@ set(axs1, 'xlim', [0 3780]);
 set(axs1, 'ylim', [304.5 324]);
 xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 12);
-yl = ylabel('T [K]', 'interpreter', 'latex');
+yl = ylabel('$T [K]$', 'interpreter', 'latex');
 set(yl, 'FontSize', 12);
 % Grid
 grid on;
@@ -65,7 +65,7 @@ set(axs1, 'xlim', [0 6600]);
 set(axs1, 'ylim', [301 325]);
 xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 12);
-yl = ylabel('T [K]', 'interpreter', 'latex');
+yl = ylabel('$T [K]$', 'interpreter', 'latex');
 set(yl, 'FontSize', 12);
 % Grid
 grid on;
@@ -92,7 +92,7 @@ set(axs1, 'xlim', [0 114]);
 set(axs1, 'ylim', [297 298.8]);
 xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 12);
-yl = ylabel('T [K]', 'interpreter', 'latex');
+yl = ylabel('$T [K]$', 'interpreter', 'latex');
 set(yl, 'FontSize', 12);
 % Grid
 grid on;
@@ -121,7 +121,7 @@ set(axs1, 'xlim', [0 408]);
 set(axs1, 'ylim', [297 307]);
 xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 12);
-yl = ylabel('T [K]', 'interpreter', 'latex');
+yl = ylabel('$T [K]$', 'interpreter', 'latex');
 set(yl, 'FontSize', 12);
 % Grid
 grid on;
@@ -154,7 +154,7 @@ set(axs1, 'xlim', [0 660]);
 set(axs1, 'ylim', [299.5 320]);
 xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 12);
-yl = ylabel('T [K]', 'interpreter', 'latex');
+yl = ylabel('$T [K]$', 'interpreter', 'latex');
 set(yl, 'FontSize', 12);
 % Grid
 grid on;
@@ -177,7 +177,7 @@ set(axs1, 'xlim', [0 560]);
 set(axs1, 'ylim', [302.5 320]);
 xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 12);
-yl = ylabel('T [K]', 'interpreter', 'latex');
+yl = ylabel('$T [K]$', 'interpreter', 'latex');
 set(yl, 'FontSize', 12);
 % Grid
 grid on;
@@ -200,7 +200,7 @@ set(axs1, 'xlim', [0 645]);
 set(axs1, 'ylim', [302 313.5]);
 xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 12);
-yl = ylabel('T [K]', 'interpreter', 'latex');
+yl = ylabel('$T [K]$', 'interpreter', 'latex');
 set(yl, 'FontSize', 12);
 % Grid
 grid on;
@@ -223,7 +223,7 @@ set(axs1, 'xlim', [0 400]);
 set(axs1, 'ylim', [301.9 303.57]);
 xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 12);
-yl = ylabel('T [K]', 'interpreter', 'latex');
+yl = ylabel('$T [K]$', 'interpreter', 'latex');
 set(yl, 'FontSize', 12);
 % Grid
 grid on;
