@@ -1,2 +1,2 @@
 # FYS4420-Experimental-techniques-in-condensed-matter-
-Repository for the data for the course FYS4420
+Repository for the data of the different experiments of the course FYS4420 – Experimental techniques in condensed matter.
