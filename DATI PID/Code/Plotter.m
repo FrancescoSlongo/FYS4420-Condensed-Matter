@@ -1,4 +1,4 @@
-+%% Script for plotting the data in the PID control experience
+%% Script for plotting the data in the PID control experience
 zzz
 load('task_3_temp_check.mat');
 cm = cm*0.6;
@@ -32,9 +32,9 @@ cm = cm*0.6;
 plot(cm, T, '.', 'markersize', 6,'color', 'r');
 % I get the axes and put some labels
 axs1 = gca;
-set(axs1, 'xtick', 0:250:6300);
+set(axs1, 'xtick', 0:150:3780);
 set(axs1, 'ytick', 304.5:1:324);
-set(axs1, 'xlim', [0 6300]);
+set(axs1, 'xlim', [0 3780]);
 set(axs1, 'ylim', [304.5 324]);
 xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 12);
@@ -49,7 +49,7 @@ box on
 plot(cm(10000:11405), T(10000:11405), '.','markersize',6,'color', 'r');
 % I set the limits
 zoom_axes1 = gca;
-set(zoom_axes1, 'xlim',[5160, 6120] , 'ylim', [322.2, 322.8])
+set(zoom_axes1, 'xlim',[3070, 3680] , 'ylim', [322.2, 322.8])
 %% I plot the figure for task 4 - second attempt
 clc;
 clear variables;
