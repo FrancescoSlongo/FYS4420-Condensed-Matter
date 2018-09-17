@@ -32,8 +32,8 @@ cm = cm*0.6;
 plot(cm, T, '.', 'markersize', 6,'color', 'r');
 % I get the axes and put some labels
 axs1 = gca;
-set(axs1, 'xtick', 0:350:3780);
-set(axs1, 'ytick', 304.5:2:324);
+set(axs1, 'xtick', 0:150:3780);
+set(axs1, 'ytick', 304.5:1:324);
 set(axs1, 'xlim', [0 3780]);
 set(axs1, 'ylim', [304.5 324]);
 xl = xlabel('$t [s]$', 'interpreter', 'latex');
@@ -59,8 +59,8 @@ cm = cm*0.6;
 plot(cm, T, '.', 'markersize', 6,'color', 'r');
 % I get the axes and put some labels
 axs1 = gca;
-set(axs1, 'xtick', 0:500:6600);
-set(axs1, 'ytick', 301:2.5:325);
+set(axs1, 'xtick', 0:350:6600);
+set(axs1, 'ytick', 301:1.5:325);
 set(axs1, 'xlim', [0 6600]);
 set(axs1, 'ylim', [301 325]);
 xl = xlabel('$t [s]$', 'interpreter', 'latex');
@@ -221,6 +221,8 @@ set(axs1, 'xtick', 0:30:400);
 set(axs1, 'ytick', 301.9:0.2:303.57);
 set(axs1, 'xlim', [0 400]);
 set(axs1, 'ylim', [301.9 303.57]);
+set(axs1, 'xtick','Fontsize', 16);
+set
 xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 16);
 yl = ylabel('$T [K]$', 'interpreter', 'latex');
