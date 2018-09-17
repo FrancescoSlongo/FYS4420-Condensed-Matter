@@ -16,6 +16,10 @@ xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 16);
 yl = ylabel('$T [K]$', 'interpreter', 'latex');
 set(yl, 'FontSize', 16);
+xt = get(gca, 'xtick');
+set(gca, 'FontSize', 16);
+yt = get(gca, 'ytick');
+set(gca, 'FontSize', 16);
 % Grid
 grid on;
 % Zoom: I create new axes
@@ -40,6 +44,10 @@ xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 16);
 yl = ylabel('$T [K]$', 'interpreter', 'latex');
 set(yl, 'FontSize', 16);
+xt = get(gca, 'xtick');
+set(gca, 'FontSize', 16);
+yt = get(gca, 'ytick');
+set(gca, 'FontSize', 16);
 % Grid
 grid on;
 % Zoom: I create new axes
@@ -67,6 +75,10 @@ xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 16);
 yl = ylabel('$T [K]$', 'interpreter', 'latex');
 set(yl, 'FontSize', 16);
+xt = get(gca, 'xtick');
+set(gca, 'FontSize', 16);
+yt = get(gca, 'ytick');
+set(gca, 'FontSize', 16);
 % Grid
 grid on;
 % Zoom: I create new axes
@@ -94,6 +106,10 @@ xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 16);
 yl = ylabel('$T [K]$', 'interpreter', 'latex');
 set(yl, 'FontSize', 16);
+xt = get(gca, 'xtick');
+set(gca, 'FontSize', 16);
+yt = get(gca, 'ytick');
+set(gca, 'FontSize', 16);
 % Grid
 grid on;
 % Zoom: I create new axes
@@ -123,6 +139,10 @@ xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 16);
 yl = ylabel('$T [K]$', 'interpreter', 'latex');
 set(yl, 'FontSize', 16);
+xt = get(gca, 'xtick');
+set(gca, 'FontSize', 16);
+yt = get(gca, 'ytick');
+set(gca, 'FontSize', 16);
 % Grid
 grid on;
 % Legend
@@ -156,6 +176,10 @@ xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 16);
 yl = ylabel('$T [K]$', 'interpreter', 'latex');
 set(yl, 'FontSize', 16);
+xt = get(gca, 'xtick');
+set(gca, 'FontSize', 16);
+yt = get(gca, 'ytick');
+set(gca, 'FontSize', 16);
 % Grid
 grid on;
 % Legend
@@ -179,6 +203,10 @@ xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 16);
 yl = ylabel('$T [K]$', 'interpreter', 'latex');
 set(yl, 'FontSize', 16);
+xt = get(gca, 'xtick');
+set(gca, 'FontSize', 16);
+yt = get(gca, 'ytick');
+set(gca, 'FontSize', 16);
 % Grid
 grid on;
 % Legend
@@ -202,6 +230,10 @@ xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 16);
 yl = ylabel('$T [K]$', 'interpreter', 'latex');
 set(yl, 'FontSize', 16);
+xt = get(gca, 'xtick');
+set(gca, 'FontSize', 16);
+yt = get(gca, 'ytick');
+set(gca, 'FontSize', 16);
 % Grid
 grid on;
 % Legend
@@ -224,7 +256,10 @@ set(axs1, 'ylim', [301.9 303.57]);
 xl = xlabel('$t [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 16);
 yl = ylabel('$T [K]$', 'interpreter', 'latex');
-set(yl, 'FontSize', 16);
+set(yl, 'FontSize', 16);xt = get(gca, 'xtick');
+set(gca, 'FontSize', 16);
+yt = get(gca, 'ytick');
+set(gca, 'FontSize', 16);
 % Grid
 grid on;
 % Legend
