@@ -18,9 +18,8 @@ dTinf_2 = std(T(1,6000:10800));
 clear T;
 
 %% Task 5-6 (calcolo H0, T1, T2)
-load('task_5.mat');
+load('task_5_temp_check_1.mat');
 % parametri
-t = 0.6*[1:length(T)]; %[s]
 Vpulse = 3.5; % [V]
 Vstep = 3;
 eps = 18; % [s] +- 1s
@@ -33,11 +32,11 @@ dH0_2 = sqrt(dTinf_2^2 + dTroom^2)/Vstep;
 
 % Trovare il punto di massimo
 figure();
-plot(t,T);
+plot(cm(1,1:500),T);
 
 % coordinate del punto di massimo
 rp = 2.62816; % trovare a occhio e inserire a mano
-tp = 27.6;
+tp = 27.05;
 
 % Funzione rp = f(T12)
 % vettore con T12
@@ -50,9 +49,9 @@ plot(T12,rp_func);
 hold on
 plot(T12,rp.*ones(1, length(T12)));
 
-% Trovare a occhio T1 e T2
-T1 = 3.941;
-T2 = 188.304;
+%% Trovare a occhio T1 e T2
+T1 = 190.81;
+T2 = 3.6977;
 
 %% Task 7
 P=(1/3)*((T1+T2)^2)/(T1*T2)-1;
