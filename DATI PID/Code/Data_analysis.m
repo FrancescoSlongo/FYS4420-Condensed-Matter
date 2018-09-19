@@ -32,7 +32,23 @@ dH0_2 = sqrt(dTinf_2^2 + dTroom^2)/Vstep;
 
 % Trovare il punto di massimo
 figure();
-plot(cm(1,1:500),T);
+plot(cm(1,1:300),T, '.', 'markersize', 6,'color', 'r');
+% I get the axes and put some labels
+axs1 = gca;
+set(axs1, 'xtick', 0:25:200);
+set(axs1, 'ytick', 0.5:0.5:3);
+set(axs1, 'xlim', [0 200]);
+set(axs1, 'ylim', [0.5 3]);
+xl = xlabel('$t [s]$', 'interpreter', 'latex');
+set(xl, 'FontSize', 16);
+yl = ylabel('$T [K]$', 'interpreter', 'latex');
+set(yl, 'FontSize', 16);
+xt = get(gca, 'xtick');
+set(gca, 'FontSize', 16);
+yt = get(gca, 'ytick');
+set(gca, 'FontSize', 16);
+% Grid
+grid on;
 
 % coordinate del punto di massimo
 rp = 2.62816; % trovare a occhio e inserire a mano
@@ -45,9 +61,25 @@ T12 = [1,0:0.1:400];
 rp_func = Vpulse*H0_1.*exp(-tp./T12).*(exp(eps./T12) - 1);
 % plot della funzione con la retta di intersezione
 figure();
-plot(T12,rp_func);
+plot(T12,rp_func, '.', 'markersize', 6,'color', 'r');
 hold on
-plot(T12,rp.*ones(1, length(T12)));
+plot(T12,rp.*ones(1, length(T12)), '.', 'markersize', 6,'color', 'b');
+% I get the axes and put some labels
+axs1 = gca;
+set(axs1, 'xtick', 0:50:400);
+set(axs1, 'ytick', 0:1:12);
+set(axs1, 'xlim', [0 400]);
+set(axs1, 'ylim', [0 12]);
+xl = xlabel('$t [s]$', 'interpreter', 'latex');
+set(xl, 'FontSize', 16);
+yl = ylabel('$T [K]$', 'interpreter', 'latex');
+set(yl, 'FontSize', 16);
+xt = get(gca, 'xtick');
+set(gca, 'FontSize', 16);
+yt = get(gca, 'ytick');
+set(gca, 'FontSize', 16);
+% Grid
+grid on;
 
 %% Trovare a occhio T1 e T2
 T1 = 190.81;
