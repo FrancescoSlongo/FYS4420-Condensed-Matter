@@ -45,9 +45,9 @@ T12 = [1,0:0.1:400];
 rp_func = Vpulse*H0_1.*exp(-tp./T12).*(exp(eps./T12) - 1);
 % plot della funzione con la retta di intersezione
 figure();
-plot(T12,rp_func,'linewidth', 1.5);
+plot(T12,rp_func,'linewidth', 1.5,'color', 'r');
 hold on
-plot(T12,rp.*ones(1, length(T12)),'linewidth', 1.5);
+plot(T12,rp.*ones(1, length(T12)),'linewidth', 1.5,'color', 'b');
 xl = xlabel('$T_{12} [s]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 12);
 yl = ylabel('$r_P [K]$', 'interpreter', 'latex');
