@@ -14,8 +14,8 @@ set(ai.Channel(2), 'InputRange', [-10 10] )
 v_in=zeros(2,1000);
 v_in_ave=zeros(2,1);
 % --- Set system parameters ----
-T1 = 190.202;
-T2 = 3.927;
+T1 = 190;
+T2 = 3.7;
 H0 = 8.7465;
 
 % --- Calculate closed-loop parameters ---
