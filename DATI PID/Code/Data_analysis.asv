@@ -34,6 +34,10 @@ dH0_2 = sqrt(dTinf_2^2 + dTroom^2)/Vstep;
 % Trovare il punto di massimo
 figure();
 plot(t,T);
+xl = xlabel('$t [s]$', 'interpreter', 'latex');
+set(xl, 'FontSize', 12);
+yl = ylabel('T_{12} [Ks]', 'interpreter', 'latex');
+set(yl, 'FontSize', 12);
 % coordinate del punto di massimo
 rp = 2.62816; % trovare a occhio e inserire a mano
 tp = 27.6;
@@ -45,16 +49,10 @@ T12 = [1,0:0.1:400];
 rp_func = Vpulse*H0_1.*exp(-tp./T12).*(exp(eps./T12) - 1);
 % plot della funzione con la retta di intersezione
 figure();
-plot(T12,rp_func,'linewidth', 1.5);
+plot(T12,rp_func);
 hold on
-plot(T12,rp.*ones(1, length(T12)),'linewidth', 1.5);
-xl = xlabel('$T_{12} [s]$', 'interpreter', 'latex');
-set(xl, 'FontSize', 12);
-yl = ylabel('$r_P [K]$', 'interpreter', 'latex');
-set(yl, 'FontSize', 12);
-grid on;
-% Legend
-legend('rp as function of T_{12}','Value of the peak r_P','location','northeast');
+plot(T12,rp.*ones(1, length(T12)));
+
 % Trovare a occhio T1 e T2
 T1 = 3.941;
 T2 = 188.304;
