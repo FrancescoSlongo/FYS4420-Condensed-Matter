@@ -187,12 +187,12 @@ for i = 1 : 5
     plot(data(17:190,1,i), beta(1,i) + beta(2,i)*exp(-beta(3,i)*data(17:190,1,i)));
 end
 xl = xlabel('$\tau [ms]$', 'interpreter', 'latex');
-set(xl, 'FontSize', 14);
+set(xl, 'FontSize', 16);
 set(gca, 'XScale', 'log')
 yl = ylabel('$G(\tau) - 1$', 'interpreter', 'latex');
-set(yl, 'FontSize', 14);
+set(yl, 'FontSize', 16);
 grid on;
-legend('T = 15', 'T = 20', 'T = 25', 'T = 30', 'T = 35', 'location','northeast');
+legend('T = 15 °C', 'T = 20 °C', 'T = 25 °C', 'T = 30 °C', 'T = 35 °C', 'location','northeast');
 
 %% Print results - part 1
 beta
@@ -245,7 +245,7 @@ fclose(fileID);
 data_rotaz(:,:,3) = [dataArray{1:end-1}];
 clearvars filename delimiter startRow endRow formatSpec fileID dataArray ans;
 
-%% Data Analysis - part 1
+%% Data Analysis - part 2
 % guesses (each row refer to a different temperature)
 guess_rotaz = [5.9980*10^(-7), sqrt(0.83529), 0.5*1.3351]; % proviamo con quello a 25 gradi per le misure precedenti
 % initialize matrix of parameters obtained from fit
@@ -273,10 +273,6 @@ for jj=1:3
     %fit
     [beta_rotaz(:,jj), R, J, Cov_rotaz(:,:,kk)] = nlinfit(t,G,model, B);
     dbeta_rotaz(:,jj) = sqrt(diag(Cov_rotaz(:,:,kk)));
-    %% Calculating parameters
-    % decay time
-    T_rotaz(jj) = 1/beta_rotaz(3,jj)*0.001; %[s]
-    dT_rotaz(jj) = 1/beta_rotaz(3,jj)^2*0.001*dbeta_rotaz(3,jj);
 end
 
 %% Plot graphs - part 2
@@ -296,8 +292,6 @@ for i = 1 : 3
     Chi_2(i) = 1/(length(data_rotaz(15:150,1,i))-3)*sum(data_rotaz(15:150,1,i) - (beta_rotaz(1,i)+beta_rotaz(2,i).*(sin(beta_rotaz(3,i).*data_rotaz(15:150,1,i))./(beta_rotaz(3,i).*data_rotaz(15:150,1,i))).^2).^2./ddata^2);
 end
 
-
-
 xl = xlabel('$\tau [ms]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 14);
 yl = ylabel('$G(\tau) - 1$', 'interpreter', 'latex');
@@ -307,10 +301,10 @@ grid on;
 legend('w = 2.108 Hz', 'w = 4.022 Hz', 'w = 2.998 Hz', 'location','northeast');
 
 figure();
-plot(data_rotaz(15:150,1,1)./T_rotaz(1), data_rotaz(15:150,2,1), '.', 'markersize', 6);
+plot(data_rotaz(15:150,1,1).*beta_rotaz(3,1), data_rotaz(15:150,2,1), '.', 'markersize', 6);
 hold on;
-plot(data_rotaz(15:150,1,2)./T_rotaz(2), data_rotaz(15:150,2,2), '.', 'markersize', 6);
-plot(data_rotaz(15:150,1,3)./T_rotaz(3), data_rotaz(15:150,2,3), '.', 'markersize', 6);
+plot(data_rotaz(15:150,1,2).*beta_rotaz(3,2), data_rotaz(15:150,2,2), '.', 'markersize', 6);
+plot(data_rotaz(15:150,1,3).*beta_rotaz(3,3), data_rotaz(15:150,2,3), '.', 'markersize', 6);
 
 xl = xlabel('$\frac{\tau}{T} $', 'interpreter', 'latex');
 set(xl, 'FontSize', 14);
