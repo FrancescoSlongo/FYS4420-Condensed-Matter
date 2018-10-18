@@ -171,8 +171,10 @@ for kk=1:5
     deta(kk) = sqrt((k_b*Temp(kk)/(6*pi*r*D(kk)^2)*dD(kk))^2 + (k_b*Temp(kk)/(6*pi*r*D(kk)))^2);
 end
 %% Chi squared
-for i = 1 : 5
-    Chi_1(i) = sum((data(17:190,2,i) - (beta(1,i) + beta(2,i)*exp(-beta(3,i)*data(17:190,1,i)))).^2);
+Chi_1(1) = 1/(length(data(17:190,2,1))-3)*sum((data(17:190,2,1) - (beta(1,1) + beta(2,1)*exp(-beta(3,1)*data(17:190,1,1)))).^2);
+ddata = sqrt(Chi_1(1));
+for i = 2 : 5
+    Chi_1(i) = 1/(length(data(17:190,2,i))-3)*sum((data(17:190,2,i) - (beta(1,i) + beta(2,i)*exp(-beta(3,i)*data(17:190,1,i)))).^2./ddata^2);
 end
 %% Plot graphs - part 1
 figure();
@@ -288,6 +290,13 @@ for i = 1 : 3
     plot(data_rotaz(15:150,1,i), beta_rotaz(1,i)+beta_rotaz(2,i).*(sin(beta_rotaz(3,i).*data_rotaz(15:150,1,i))./(beta_rotaz(3,i).*data_rotaz(15:150,1,i))).^2);
     %plot(data_rotaz(15:150,1,1), beta_rotaz(1,i) + beta_rotaz(2,i)*exp(-beta_rotaz(3,i)*data_rotaz(15:150,1,i)));
 end
+
+%% Chi quadro
+for i = 1 : 3
+    Chi_2(i) = 1/(length(data_rotaz(15:150,1,i))-3)*sum(data_rotaz(15:150,1,i) - (beta_rotaz(1,i)+beta_rotaz(2,i).*(sin(beta_rotaz(3,i).*data_rotaz(15:150,1,i))./(beta_rotaz(3,i).*data_rotaz(15:150,1,i))).^2).^2./ddata^2);
+end
+
+
 
 xl = xlabel('$\tau [ms]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 14);
