@@ -282,10 +282,10 @@ hold on;
 plot(data_rotaz(15:150,1,2), data_rotaz(15:150,2,2), '.', 'markersize', 6);
 plot(data_rotaz(15:150,1,3), data_rotaz(15:150,2,3), '.', 'markersize', 6);
 
-for i = 1 : 3
-    plot(data_rotaz(15:150,1,i), beta_rotaz(1,i)+beta_rotaz(2,i).*(sin(beta_rotaz(3,i).*data_rotaz(15:150,1,i))./(beta_rotaz(3,i).*data_rotaz(15:150,1,i))).^2);
-    %plot(data_rotaz(15:150,1,1), beta_rotaz(1,i) + beta_rotaz(2,i)*exp(-beta_rotaz(3,i)*data_rotaz(15:150,1,i)));
-end
+% for i = 1 : 3
+%     plot(data_rotaz(15:150,1,i), beta_rotaz(1,i)+beta_rotaz(2,i).*(sin(beta_rotaz(3,i).*data_rotaz(15:150,1,i))./(beta_rotaz(3,i).*data_rotaz(15:150,1,i))).^2);
+%     %plot(data_rotaz(15:150,1,1), beta_rotaz(1,i) + beta_rotaz(2,i)*exp(-beta_rotaz(3,i)*data_rotaz(15:150,1,i)));
+% end
 
 %% Chi quadro
 for i = 1 : 3
@@ -298,7 +298,7 @@ yl = ylabel('$G(\tau) - 1$', 'interpreter', 'latex');
 set(gca, 'XScale', 'log')
 set(yl, 'FontSize', 14);
 grid on;
-legend('w = 2.108 Hz', 'w = 4.022 Hz', 'w = 2.998 Hz', 'location','northeast');
+legend('w = 2.108 Hz', 'w = 4.028 Hz', 'w = 2.998 Hz', 'location','northeast');
 
 figure();
 plot(data_rotaz(15:150,1,1).*beta_rotaz(3,1), data_rotaz(15:150,2,1), '.', 'markersize', 6);
@@ -312,7 +312,7 @@ yl = ylabel('$G(\tau) - 1$', 'interpreter', 'latex');
 set(gca, 'XScale', 'log')
 set(yl, 'FontSize', 14);
 grid on;
-legend('w = 2.108 Hz', 'w = 4.022 Hz', 'w = 2.998 Hz', 'location','northeast');
+legend('w = 2.108 Hz', 'w = 4.028 Hz', 'w = 2.998 Hz', 'location','northeast');
 
 
 % mettere i fit sopra ai relativi dati??
