@@ -162,7 +162,7 @@ for kk=1:5
     %% Calculating parameters
     % decay time
     T(kk) = 1/beta(3,kk)*0.001; %[s]
-    dT(kk) = 1/dbeta(3,kk)*0.001; %[s]
+    dT(kk) = 1/beta(3,kk).^2*dbeta(3,kk)*0.001; %[s]
     % diffusion contant
     D(kk) = beta(3,kk)/(2*q^2)*1000; %[m^2/s]
     dD(kk) = sqrt((dbeta(3,kk)/(2*q^2)*1000)^2+(2*beta(3,kk)/(2*q^3)*1000*dq)^2); %[m^2/s]
