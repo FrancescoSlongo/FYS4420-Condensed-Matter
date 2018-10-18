@@ -3,7 +3,6 @@ zzz
 load('task_3_temp_check.mat');
 % I create the figure for the task 3
 figure();
-load('task_3_temp_check.mat');
 plot(cm, T, '.', 'markersize', 6,'color', 'r');
 % I get the axes and put some labels
 axs1 = gca;
