@@ -168,7 +168,7 @@ for kk=1:5
     dD(kk) = sqrt((dbeta(3,kk)/(2*q^2)*1000)^2+(2*beta(3,kk)/(2*q^3)*1000*dq)^2); %[m^2/s]
     % viscosity
     eta(kk) = k_b*Temp(kk)/(6*pi*r*D(kk)); %[(s*N)/m^2]
-    deta(kk) = sqrt((k_b*Temp(kk)/(6*pi*r*D(kk)^2)*dD(kk))^2 + (k_b*Temp(kk)/(6*pi*r*D(kk)))^2);
+    deta(kk) = sqrt((k_b*Temp(kk)/(6*pi*r*D(kk)^2)*dD(kk))^2 + (k_b*dTemp/(6*pi*r*D(kk)))^2);
 end
 %% Chi squared
 Chi_1(1) = 1/(length(data(17:190,2,1))-3)*sum((data(17:190,2,1) - (beta(1,1) + beta(2,1)*exp(-beta(3,1)*data(17:190,1,1)))).^2);
@@ -253,10 +253,10 @@ beta_rotaz = zeros(3,3);
 dbeta_rotaz = zeros(3,3);
 % Sperimental angular velocity
 N = 100; % number of spins;
-T = [298.1, 156.0, 209.6];
-dT = [0.5, 0.6, 0.5];
-omega_measured = 2*pi*N./T;
-domega_measured = 2*pi*N./T.^2.*dT;
+Period = [298.1, 156.0, 209.6];
+dPeriod = [0.5, 0.6, 0.5];
+omega_measured = 2*pi*N./Period;
+domega_measured = 2*pi*N./Period.^2.*dPeriod;
 for jj=1:3
     %% Function definition and data assignement
     % model to fit
