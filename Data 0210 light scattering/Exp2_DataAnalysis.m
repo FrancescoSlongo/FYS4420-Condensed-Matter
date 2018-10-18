@@ -193,7 +193,32 @@ yl = ylabel('$G(\tau) - 1$', 'interpreter', 'latex');
 set(yl, 'FontSize', 16);
 grid on;
 legend('T = 15 °C', 'T = 20 °C', 'T = 25 °C', 'T = 30 °C', 'T = 35 °C', 'location','northeast');
+%% Other plots
+figure();
+he1 = errorbarxy(Temp,D,dTemp*ones(size(Temp)),dD);
+hh11 = he1(1);
+set(hh11, 'linestyle', 'none','marker', '.', 'markersize', 6,'color', 'b'); 
+hh12 = he1(2);
+set(hh12, 'color', 'r');
+setbarsize(he1, Temp, 0.0, D, 0.0);
+x1 = xlabel({'$T [K]$'},'interpreter', 'latex');
+set(xl, 'FontSize', 16);
+y1 = ylabel({'$D [m^2/s]$'},'interpreter', 'latex');
+set(yl, 'FontSize', 16);
+grid on;
 
+figure();
+he2 = errorbarxy(Temp,eta,dTemp*ones(size(Temp)),deta);
+hh21 = he2(1);
+set(hh21, 'linestyle', 'none','marker', '.', 'markersize', 6,'color', 'b'); 
+hh22 = he2(2);
+set(hh22, 'color', 'r');
+setbarsize(he2, Temp, 0.0, eta, 0.0);
+x2 = xlabel({'$T [K]$'},'interpreter', 'latex');
+set(x2, 'FontSize', 16);
+y2 = ylabel({'$\eta [PI]$'},'interpreter', 'latex');
+set(y2, 'FontSize', 16);
+grid on;
 %% Print results - part 1
 beta
 dbeta
@@ -289,8 +314,10 @@ plot(data_rotaz(15:150,1,3), data_rotaz(15:150,2,3), '.', 'markersize', 6);
 
 %% Chi quadro
 for i = 1 : 3
-    Chi_2(i) = 1/(length(data_rotaz(15:150,1,i))-3)*sum(data_rotaz(15:150,1,i) - (beta_rotaz(1,i)+beta_rotaz(2,i).*(sin(beta_rotaz(3,i).*data_rotaz(15:150,1,i))./(beta_rotaz(3,i).*data_rotaz(15:150,1,i))).^2).^2./ddata^2);
+    Chi_2(i) = 1/(length(data_rotaz(15:150,1,i))-3)*sum((data_rotaz(15:150,1,i) - (beta_rotaz(1,i)+beta_rotaz(2,i).*(sin(beta_rotaz(3,i).*data_rotaz(15:150,1,i))./(beta_rotaz(3,i).*data_rotaz(15:150,1,i))).^2)).^2./ddata^2);
 end
+
+%% Plot 3
 
 xl = xlabel('$\tau [ms]$', 'interpreter', 'latex');
 set(xl, 'FontSize', 14);
@@ -306,7 +333,7 @@ hold on;
 plot(data_rotaz(15:150,1,2).*beta_rotaz(3,2), data_rotaz(15:150,2,2), '.', 'markersize', 6);
 plot(data_rotaz(15:150,1,3).*beta_rotaz(3,3), data_rotaz(15:150,2,3), '.', 'markersize', 6);
 
-xl = xlabel('$\frac{\tau}{T} $', 'interpreter', 'latex');
+xl = xlabel('$\beta_3 \tau$', 'interpreter', 'latex');
 set(xl, 'FontSize', 14);
 yl = ylabel('$G(\tau) - 1$', 'interpreter', 'latex');
 set(gca, 'XScale', 'log')
@@ -314,5 +341,18 @@ set(yl, 'FontSize', 14);
 grid on;
 legend('w = 2.108 Hz', 'w = 4.028 Hz', 'w = 2.998 Hz', 'location','northeast');
 
-
+figure();
+he3 = errorbarxy(omega_measured,beta_rotaz(3,:),domega_measured,dbeta_rotaz(3,:));
+hh31 = he3(1);
+set(hh31, 'linestyle', 'none','marker', '.', 'markersize', 6,'color', 'b'); 
+hh32 = he3(2);
+set(hh32, 'color', 'r');
+setbarsize(he3, omega_measured, 0.0, beta_rotaz, 0.0);
+x3 = xlabel({'$\omega [Hz]$'},'interpreter', 'latex');
+set(x3, 'FontSize', 16);
+y3 = ylabel({'$\beta_3 [1/s]$'},'interpreter', 'latex');
+set(y3, 'FontSize', 16);
+axs3 = gca;
+set(axs3, 'ylim', [30 70]);
+grid on;
 % mettere i fit sopra ai relativi dati??

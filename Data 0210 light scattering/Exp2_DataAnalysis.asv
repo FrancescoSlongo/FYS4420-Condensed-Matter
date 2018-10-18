@@ -162,13 +162,13 @@ for kk=1:5
     %% Calculating parameters
     % decay time
     T(kk) = 1/beta(3,kk)*0.001; %[s]
-    dT(kk) = 1/dbeta(3,kk)*0.001; %[s]
+    dT(kk) = 1/beta(3,kk).^2*dbeta(3,kk)*0.001; %[s]
     % diffusion contant
     D(kk) = beta(3,kk)/(2*q^2)*1000; %[m^2/s]
     dD(kk) = sqrt((dbeta(3,kk)/(2*q^2)*1000)^2+(2*beta(3,kk)/(2*q^3)*1000*dq)^2); %[m^2/s]
     % viscosity
     eta(kk) = k_b*Temp(kk)/(6*pi*r*D(kk)); %[(s*N)/m^2]
-    deta(kk) = sqrt((k_b*Temp(kk)/(6*pi*r*D(kk)^2)*dD(kk))^2 + (k_b*Temp(kk)/(6*pi*r*D(kk)))^2);
+    deta(kk) = sqrt((k_b*Temp(kk)/(6*pi*r*D(kk)^2)*dD(kk))^2 + (k_b*dTemp/(6*pi*r*D(kk)))^2);
 end
 %% Chi squared
 Chi_1(1) = 1/(length(data(17:190,2,1))-3)*sum((data(17:190,2,1) - (beta(1,1) + beta(2,1)*exp(-beta(3,1)*data(17:190,1,1)))).^2);
@@ -193,7 +193,14 @@ yl = ylabel('$G(\tau) - 1$', 'interpreter', 'latex');
 set(yl, 'FontSize', 16);
 grid on;
 legend('T = 15 °C', 'T = 20 °C', 'T = 25 °C', 'T = 30 °C', 'T = 35 °C', 'location','northeast');
-
+%% Other plots
+figure();
+he1 = errorbarxy(Temp,dTemp,D,dD);
+hh11 = he1(1);
+set(hh21, 'linestyle', 'none','marker', '.', 'markersize', 6,'color', 'b') 
+hh22 = he2(2);
+set(hh22, 'color', 'r')
+setbarsize(he2, dTemp, 0.0, zenen(:,3), 0.0)
 %% Print results - part 1
 beta
 dbeta
@@ -253,10 +260,10 @@ beta_rotaz = zeros(3,3);
 dbeta_rotaz = zeros(3,3);
 % Sperimental angular velocity
 N = 100; % number of spins;
-T = [298.1, 156.0, 209.6];
-dT = [0.5, 0.6, 0.5];
-omega_measured = 2*pi*N./T;
-domega_measured = 2*pi*N./T.^2.*dT;
+Period = [298.1, 156.0, 209.6];
+dPeriod = [0.5, 0.6, 0.5];
+omega_measured = 2*pi*N./Period;
+domega_measured = 2*pi*N./Period.^2.*dPeriod;
 for jj=1:3
     %% Function definition and data assignement
     % model to fit
@@ -273,10 +280,6 @@ for jj=1:3
     %fit
     [beta_rotaz(:,jj), R, J, Cov_rotaz(:,:,kk)] = nlinfit(t,G,model, B);
     dbeta_rotaz(:,jj) = sqrt(diag(Cov_rotaz(:,:,kk)));
-    %% Calculating parameters
-    % decay time
-    T_rotaz(jj) = 1/beta_rotaz(3,jj)*0.001; %[s]
-    dT_rotaz(jj) = 1/beta_rotaz(3,jj)^2*0.001*dbeta_rotaz(3,jj);
 end
 
 %% Plot graphs - part 2
@@ -286,14 +289,14 @@ hold on;
 plot(data_rotaz(15:150,1,2), data_rotaz(15:150,2,2), '.', 'markersize', 6);
 plot(data_rotaz(15:150,1,3), data_rotaz(15:150,2,3), '.', 'markersize', 6);
 
-for i = 1 : 3
-    plot(data_rotaz(15:150,1,i), beta_rotaz(1,i)+beta_rotaz(2,i).*(sin(beta_rotaz(3,i).*data_rotaz(15:150,1,i))./(beta_rotaz(3,i).*data_rotaz(15:150,1,i))).^2);
-    %plot(data_rotaz(15:150,1,1), beta_rotaz(1,i) + beta_rotaz(2,i)*exp(-beta_rotaz(3,i)*data_rotaz(15:150,1,i)));
-end
+% for i = 1 : 3
+%     plot(data_rotaz(15:150,1,i), beta_rotaz(1,i)+beta_rotaz(2,i).*(sin(beta_rotaz(3,i).*data_rotaz(15:150,1,i))./(beta_rotaz(3,i).*data_rotaz(15:150,1,i))).^2);
+%     %plot(data_rotaz(15:150,1,1), beta_rotaz(1,i) + beta_rotaz(2,i)*exp(-beta_rotaz(3,i)*data_rotaz(15:150,1,i)));
+% end
 
 %% Chi quadro
 for i = 1 : 3
-    Chi_2(i) = 1/(length(data_rotaz(15:150,1,i))-3)*sum(data_rotaz(15:150,1,i) - (beta_rotaz(1,i)+beta_rotaz(2,i).*(sin(beta_rotaz(3,i).*data_rotaz(15:150,1,i))./(beta_rotaz(3,i).*data_rotaz(15:150,1,i))).^2).^2./ddata^2);
+    Chi_2(i) = 1/(length(data_rotaz(15:150,1,i))-3)*sum((data_rotaz(15:150,1,i) - (beta_rotaz(1,i)+beta_rotaz(2,i).*(sin(beta_rotaz(3,i).*data_rotaz(15:150,1,i))./(beta_rotaz(3,i).*data_rotaz(15:150,1,i))).^2)).^2./ddata^2);
 end
 
 xl = xlabel('$\tau [ms]$', 'interpreter', 'latex');
@@ -302,21 +305,21 @@ yl = ylabel('$G(\tau) - 1$', 'interpreter', 'latex');
 set(gca, 'XScale', 'log')
 set(yl, 'FontSize', 14);
 grid on;
-legend('w = 2.108 Hz', 'w = 4.022 Hz', 'w = 2.998 Hz', 'location','northeast');
+legend('w = 2.108 Hz', 'w = 4.028 Hz', 'w = 2.998 Hz', 'location','northeast');
 
 figure();
-plot(data_rotaz(15:150,1,1)./T_rotaz(1), data_rotaz(15:150,2,1), '.', 'markersize', 6);
+plot(data_rotaz(15:150,1,1).*beta_rotaz(3,1), data_rotaz(15:150,2,1), '.', 'markersize', 6);
 hold on;
-plot(data_rotaz(15:150,1,2)./T_rotaz(2), data_rotaz(15:150,2,2), '.', 'markersize', 6);
-plot(data_rotaz(15:150,1,3)./beta_rotaz(3,jj), data_rotaz(15:150,2,3), '.', 'markersize', 6);
+plot(data_rotaz(15:150,1,2).*beta_rotaz(3,2), data_rotaz(15:150,2,2), '.', 'markersize', 6);
+plot(data_rotaz(15:150,1,3).*beta_rotaz(3,3), data_rotaz(15:150,2,3), '.', 'markersize', 6);
 
-xl = xlabel('$\frac{\tau}{T} $', 'interpreter', 'latex');
+xl = xlabel('$\beta_3 \tau$', 'interpreter', 'latex');
 set(xl, 'FontSize', 14);
 yl = ylabel('$G(\tau) - 1$', 'interpreter', 'latex');
 set(gca, 'XScale', 'log')
 set(yl, 'FontSize', 14);
 grid on;
-legend('w = 2.108 Hz', 'w = 4.022 Hz', 'w = 2.998 Hz', 'location','northeast');
+legend('w = 2.108 Hz', 'w = 4.028 Hz', 'w = 2.998 Hz', 'location','northeast');
 
 
 % mettere i fit sopra ai relativi dati??
