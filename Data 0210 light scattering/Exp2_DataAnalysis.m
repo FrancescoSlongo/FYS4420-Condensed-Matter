@@ -307,10 +307,10 @@ hold on;
 plot(data_rotaz(15:150,1,2), data_rotaz(15:150,2,2), '.', 'markersize', 6);
 plot(data_rotaz(15:150,1,3), data_rotaz(15:150,2,3), '.', 'markersize', 6);
 
-% for i = 1 : 3
-%     plot(data_rotaz(15:150,1,i), beta_rotaz(1,i)+beta_rotaz(2,i).*(sin(beta_rotaz(3,i).*data_rotaz(15:150,1,i))./(beta_rotaz(3,i).*data_rotaz(15:150,1,i))).^2);
-%     %plot(data_rotaz(15:150,1,1), beta_rotaz(1,i) + beta_rotaz(2,i)*exp(-beta_rotaz(3,i)*data_rotaz(15:150,1,i)));
-% end
+for i = 1 : 3
+    plot(data_rotaz(15:150,1,i), beta_rotaz(1,i)+beta_rotaz(2,i).*(sin(beta_rotaz(3,i).*data_rotaz(15:150,1,i))./(beta_rotaz(3,i).*data_rotaz(15:150,1,i))).^2);
+    %plot(data_rotaz(15:150,1,1), beta_rotaz(1,i) + beta_rotaz(2,i)*exp(-beta_rotaz(3,i)*data_rotaz(15:150,1,i)));
+end
 
 %% Chi quadro
 for i = 1 : 3
